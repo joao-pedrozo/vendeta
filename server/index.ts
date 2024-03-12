@@ -68,6 +68,23 @@ app.post("/pet/group/", async (req, res) => {
   res.json(petGroup);
 });
 
+app.put("/points/add", async (req, res) => {
+  const pointsToAdd = req.body.points;
+
+  const user = await prisma.user.update({
+    where: {
+      id: 1,
+    },
+    data: {
+      points: {
+        increment: pointsToAdd || 100,
+      },
+    },
+  });
+
+  res.json(user);
+});
+
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
