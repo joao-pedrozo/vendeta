@@ -1,9 +1,11 @@
-import { useState } from "react";
+import Overlay from "./Overlay";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <h1 className="text-red-700 text-4xl text-center mt-8">Hello</h1>;
+  return (
+    <div className="p-32 flex justify-center">
+      <Overlay />
+    </div>
+  );
 }
 
 export default App;
