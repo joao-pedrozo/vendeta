@@ -1,0 +1,14 @@
+{
+  "name": "vendeta",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "scripts": {
+    "dev": "tsc -w"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
