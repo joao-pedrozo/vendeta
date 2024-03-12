@@ -13,4 +13,43 @@ datasource db {
 model User {
   id       Int    @id @default(autoincrement())
   username String
+  pet      Pet?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Pet {
+  id      Int     @id @default(autoincrement())
+  name    String
+  ownerId Int     @unique
+  owner   User    @relation(fields: [ownerId], references: [id])
+  breedId Int
+  breed   Breed?  @relation(fields: [breedId], references: [id])
+  color   String
+  size    String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PetGroup {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Breed     Breed[]
+}
+
+model Breed {
+  id         Int      @id @default(autoincrement())
+  name       String
+  rarity     Int
+  pets       Pet[]
+  petGroupId Int
+  group      PetGroup @relation(fields: [petGroupId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
